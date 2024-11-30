@@ -12,16 +12,17 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 import java.util.ArrayList;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.Item> {
-    private ArrayList<Comercio> comercios;
+    private static ArrayList<Comercio> comercios;
 
     // setData de David, actualiza la lista que le pasamos al recyclerView
-    public void actualizarListado(ArrayList<Comercio> comercios){
-        this.comercios = comercios;
+    public static void actualizarListado(ArrayList<Comercio> comercios){
+        Adapter.comercios = comercios;
     }
 
     // Asigna al atributo la instancia de Comercios
     public Adapter(){
         this.comercios = Comercios.cogerInstancia().recogerTodosLosComercios();
+        this.notifyDataSetChanged();
     }
 
     @NonNull
